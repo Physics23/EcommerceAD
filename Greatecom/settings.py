@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'store',
+    'carts',
 
 ]
 
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.contex_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -130,6 +132,21 @@ STATICFILES_DIRS = ['Greatecom/static',]
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
+
+#code for messages alert
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+
+# STMP EMAIL CONFIGURATION
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'alayephysics@gmail.com'
+EMAIL_HOST_PASSWORD = 'yxcnlhysiovsouch'
+EMAIL_USE_TLS = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
