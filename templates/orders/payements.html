@@ -9,14 +9,7 @@
 <!-- ============================ COMPONENT 1 ================================= -->
 
 <div class="row">
-	{% if not cart_items %}
-	<h2 class ="text-center"> Your shopping cart is empty</h2>
-	<p></p>
-	<div class="text-center">
-		<a href="{% url 'store' %}" class="btn btn-primary"> continue shopping </a>
-	</div>
-	{% else %}
-	<aside class="col-lg-9">
+	<aside class="col-lg-8">
 <div class="card">
 <table class="table table-borderless table-shopping-cart">
 <thead class="text-muted">
@@ -81,7 +74,7 @@
 </div> <!-- card.// -->
 
 	</aside> <!-- col.// -->
-	<aside class="col-lg-3">
+	<aside class="col-lg-4">
 
 		<div class="card">
 		<div class="card-body">
@@ -110,7 +103,6 @@
 
 
 </div> <!-- row.// -->
-{% endif %}
 <!-- ============================ COMPONENT 1 END .// ================================= -->
 
 </div> <!-- container .//  -->
