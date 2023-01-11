@@ -3,12 +3,13 @@ from carts.models import CartItem
 from django import forms
 from .forms import OrderForm
 from .models import Order
+from datetime import datetime
 import datetime
 
 def payement(request):
     return render(request, 'orders/payements.html')
 
-def placeorder(request):
+def placeorder(request, quantity = 0, total = 0):
     current_user = request.user
     # if cartcount is equal or less to zero, then redirect to shop
     cart_items = CartItem.objects.filter(user = current_user)
@@ -24,7 +25,7 @@ def placeorder(request):
            tax = 0
            cart_items = CartItem.objects.filter(user = current_user)
            for cart_item in cart_items:
-                total =+  (CartItem.product.price*cart_item*price)
+                total =+  (cart_item.product.price*cart_item.quantity)
                 quantity+= cart_item.quantity
                 tax = (2*total)/100
                 grand_total = total+tax
@@ -45,10 +46,10 @@ def placeorder(request):
            data.ip = request.META.get('REMOTE_ADDR')
            data.save()
         # Generate order_number
-           yr = int(datatime.date.today().strftime('% Y'))
-           dt = int(datatime.date.today().strftime('% d'))
-           my = int(datatime.date.today().strftime('% m'))
-           d = datetime.date(yr,dt,mt)
+           yr = int(datetime.date.today().strftime('%Y'))
+           dt = int(datetime.date.today().strftime('%d'))
+           my = int(datetime.date.today().strftime('%m'))
+           d = datetime.date(yr,dt,my)
            current_date = d.strftime("%Y%m%d")
            order_number = current_date + str(data.id)
            data.order_number = order_number
@@ -58,4 +59,4 @@ def placeorder(request):
            return redirect('checkout')
 
 
-    return render(request, 'orders/placeorder.html')
+    #return render(request, 'orders/placeorder.html')
