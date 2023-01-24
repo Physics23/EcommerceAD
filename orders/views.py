@@ -2,11 +2,37 @@ from django.shortcuts import render, redirect
 from carts.models import CartItem
 from django import forms
 from .forms import OrderForm
-from .models import Order
+from .models import Order, Payement
 from datetime import datetime
 import datetime
+from datetime import date
+import json
 
 def payement(request):
+    body = json.load(request.body)
+    print(body)
+    order = Order.objects.get(user=request.user, is_ordered=False, order_number=body['orderID'])
+    print(order)
+    #store information payement inside payement models
+    payement = Payement(
+    user= request.user,
+    payement_id = body['transID'],
+    payement_method = body['payement_method'],
+    amount_paid = order.order_total,
+    status = body['status'],
+    )
+    payement.save()
+    order.payement = payement
+    order.is_ordered = True
+    order.save()
+    #store transactions details inside the payements models
+
+    #move order cartitem to the order productdertable
+    # reduce the quantity of sold products
+    # clear the carts
+    # send an order received email to the customer
+    # send order number and transaction id back to senddata method via jsonResponse
+
     return render(request, 'orders/payements.html')
 
 def placeorder(request, quantity = 0, total = 0):
@@ -26,9 +52,9 @@ def placeorder(request, quantity = 0, total = 0):
            cart_items = CartItem.objects.filter(user = current_user)
            for cart_item in cart_items:
                 total =+  (cart_item.product.price*cart_item.quantity)
-                quantity+= cart_item.quantity
+                quantity+= (cart_item.quantity)
                 tax = (2*total)/100
-                grand_total = total+tax
+                grandtotal = total+tax
         #store all the billing information in the ordertable
            data.user = current_user
            data.first_name = form.cleaned_data['first_name']
@@ -48,15 +74,25 @@ def placeorder(request, quantity = 0, total = 0):
         # Generate order_number
            yr = int(datetime.date.today().strftime('%Y'))
            dt = int(datetime.date.today().strftime('%d'))
-           my = int(datetime.date.today().strftime('%m'))
-           d = datetime.date(yr,dt,my)
+           mt = int(datetime.date.today().strftime('%m'))
+           d = datetime.date(yr,mt,dt)
            current_date = d.strftime("%Y%m%d")
            order_number = current_date + str(data.id)
            data.order_number = order_number
            data.save()
-           return redirect('checkout')
+
+           order = Order.objects.get(user = current_user, is_ordered = False, order_number = order_number)
+
+           context = {
+           'order':order,
+           'tax':tax,
+           'total':total,
+           'cart_items':cart_items,
+           'grandtotal':grandtotal,
+           }
+           return render(request, 'orders/payements.html', context)
        else:
-           return redirect('checkout')
+           return redirect('payement')
 
 
     #return render(request, 'orders/placeorder.html')
