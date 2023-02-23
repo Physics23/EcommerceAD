@@ -6,25 +6,12 @@
 
 <div class="container">
 	<div class="row">
-	<aside class="col-md-3">
-		<!--   SIDEBAR   -->
-		<ul class="list-group">
-			<a class="list-group-item active" href="#"> My order history </a>
-			<a class="list-group-item" href="#"> Transactions </a>
-			<a class="list-group-item" href="#"> Return and refunds </a>
-			<a class="list-group-item" href="#">Settings </a>
-			<a class="list-group-item" href="#"> My Selling Items </a>
-			<a class="list-group-item" href="#"> Received orders </a>
-		</ul>
-		<br>
-		<a class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a>
-		<!--   SIDEBAR .//END   -->
-	</aside>
+		{% include 'includes/dashboard_sidbar.html'%}
 	<main class="col-md-9">
 		<article class="card">
 		<header class="card-header">
-			<strong class="d-inline-block mr-3">Order ID: 6123456789</strong>
-			<span>Order Date: 16 December 2018</span>
+			<strong class="d-inline-block mr-3">logged in as:</strong>
+			<span>{{user.first_name}}</span>
 		</header>
 		<div class="card-body">
 			<div class="row">
