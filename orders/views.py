@@ -140,10 +140,13 @@ def placeorder(request, quantity = 0, total = 0):
 
 def order_complete(request):
     order_number = request.GET.get('order_number')
-    transID = request.GET.get('transID')
+    transID = request.GET.get('payement_id')
     try:
         order = Order.objects.get(order_number=order_number, is_ordered=True)
         orderproducts = OrderProduct.objects.filter(order_id=order.id)
+        subtotal = 0
+        for i in orderproducts:
+            subtotal+= i.product_price*i.quantity
         payement = Payement.objects.get(payement_id=transID)
         context = {
         'order':order,
@@ -151,8 +154,9 @@ def order_complete(request):
         'order_number':order.order_number,
         'transID':payement.payement_id,
         'payement':payement,
+        'subtotal':subtotal,
         }
         return render(request, 'orders/order_complete.html', context)
 
     except(Payement.DoesNotExist, Order.DoesNotExist):
-       return('home')
+       return redirect('home')

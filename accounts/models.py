@@ -80,6 +80,9 @@ class Account(AbstractBaseUser):
     def has_module_perms(self,add_labels):
         return True
 
+    def fullname(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete = models.CASCADE)

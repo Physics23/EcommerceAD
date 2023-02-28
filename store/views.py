@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ReviewForm
-from .models import Product
+from .models import Product, ProductGallery
 from orders.models import OrderProduct
 from store.models import ReviewRating
 from django.contrib import messages
@@ -47,10 +47,16 @@ def product_detail(request, category_slug , product_slug):
         orderproduct = OrderProduct.objects.filter(user=request.user.id, product_id = single_product.id).exists()
     except OrderProduct.DoesNotExist:
         orderproduct = none
+    #get reviews
+    reviews = ReviewRating.objects.filter(product_id=single_product.id, status =True)
+
+    product_gallery = ProductGallery.objects.filter(product_id=single_product.id)
 
     context = {'single_product':single_product,
                 'in_cart':in_cart,
                 'orderproduct': orderproduct,
+                'reviews':reviews,
+                'product_gallery': product_gallery
     }
     return render(request, 'store/product_detail.html', context)
 
