@@ -85,7 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Greatecom.wsgi.application'
-AUTH_USER_MODEL = 'accounts.Account'
+AUTH_USER_MODEL = 'accounts.Account' # tell django that we are using customuser model.
 
 
 # Database
@@ -137,6 +137,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = ['Greatecom/static',]
 
+# media files confugurations
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
