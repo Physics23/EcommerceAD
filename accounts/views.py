@@ -30,6 +30,8 @@ def register(request):
             user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password = password)
             user.phonnumber=phonnumber
             user.save()
+            #profile creation.
+            
             #USER ACTIVATION
             current_site = get_current_site(request)
             mail_subject ='please activate your account'
@@ -233,10 +235,10 @@ def my_orders(request):
 #####################################################################
 
 def edit_profile(request):
-    userprofile = get_object_or_404(UserProfile, user=request.user)
+    userprofile = get_object_or_404(UserProfile, user = request.user)
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance = request.user)
-        profile_form = UserProfileForm(request.POST, request.FILES, instance = userprofile)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance  = userprofile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()

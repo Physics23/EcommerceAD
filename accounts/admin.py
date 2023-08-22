@@ -20,7 +20,7 @@ class UserProfileAdmin(admin.ModelAdmin):
         return format_html('<img src="{}" width = "30" style ="border-radius:50%;">'.format(object.profilepicture.url))
         thumnail.short_description = 'Profile Picture'
 
-    list_display = ('user', 'city', 'country')
+    list_display = ('thumnail','user', 'city', 'country')
 
 
 admin.site.register(Account, AccountAdmin)
