@@ -30,8 +30,11 @@ def register(request):
             user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password = password)
             user.phonnumber=phonnumber
             user.save()
-            #profile creation.
-            
+            # automatic profile creation base on the user Id
+            profile = UserProfile()
+            profile.user_id = user.id
+            profile.profilepicture = 'default/defaut.user.png'
+            profile.save()
             #USER ACTIVATION
             current_site = get_current_site(request)
             mail_subject ='please activate your account'
@@ -151,8 +154,10 @@ def activate(request, uidb64, token):
 def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id = request.user.id, is_ordered =True)
     orders_count = orders.count()
+    userprofile = UserProfile.objects.get(user_id = request.user.id)
     context = {
           'orders_count':orders_count,
+          'userprofile':userprofile,
     }
     return render(request, 'accounts/dashboard.html', context)
 
@@ -227,7 +232,7 @@ def resetpassword(request):
 
 ####################################################################
 def my_orders(request):
-    orders = Order.objects.filter(user =request.user, is_ordered=True).order_by('-created_at')
+    orders = Order.objects.filter(user=request.user, is_ordered=True).order_by('-created_at')
     context = {
          'orders':orders,
     }

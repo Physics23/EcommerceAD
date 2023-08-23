@@ -18,16 +18,17 @@
 				<div class="col -md -6">
 					<div class="card" style='text-align:center;'>
 						<div class="card-body">
+							<img src="{{userprofile.profilepicture.url}}" alt="Profile Picture" width ="50" height="40" style="borders-radius":50>
 							<h5 class="card-title">total orders:</h5>
 							<h4>{{orders.count}}</h4>
-							<a href="#">views orders</a>
+							<a href="{% url 'my_orders'%}">views orders</a>
 						</div>
 					</div>
 				</div>
         <div class="col-md-6">
 					<div class="card" style='text-align:center;'>
 						<div class="card-body">
-					<img src="https://www.w3schools.com/howto/img_avatar.png" alt="profile picture" width='50' heigth ='50'style='border-radius:50%';>
+					<img src="{{userprofile.profilepicture.url}}" alt="profile picture" width='50' heigth ='50'style='border-radius:50%';>
 							<p class="mb-0">{{user.email}}</p>
 							<p>{{user.phonnumber}}</p>
 
