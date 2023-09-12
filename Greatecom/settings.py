@@ -85,7 +85,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Greatecom.wsgi.application'
-AUTH_USER_MODEL = 'accounts.Account' # tell django that we are using customuser model.
+AUTH_USER_MODEL = 'accounts.Account' # acounts is Account is model: This line tells django we are using custom model
 
 
 # Database

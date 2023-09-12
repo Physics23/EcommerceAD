@@ -13,5 +13,8 @@ urlpatterns = [
     path('resetpassword/', views.resetpassword, name ='resetpassword'),
     path('my_orders/', views.my_orders, name='my_orders'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('changepassword/', views.changepassword, name='changepassword'),
+    path('orderdetail/<int:order_id>/', views.orderdetail, name = 'orderdetail'),
+    path('contact/', views.contact, name ='contact'),
 
     ]

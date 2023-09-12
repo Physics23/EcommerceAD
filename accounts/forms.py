@@ -50,3 +50,9 @@ class UserProfileForm(forms.ModelForm):
         super(UserProfileForm, self).__init__(*args,**kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']= 'form-control'
+
+# contact class
+class ContacForm(forms.Form):
+     subject = forms.CharField(max_length=100)
+     message = forms.CharField(widget=forms.Textarea)
+     sender = forms.EmailField()
