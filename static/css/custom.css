@@ -62,3 +62,7 @@ ul.thumb li img{
   border: 1px solid grey;
 
 }
+
+.rating-star i{
+  color: #ffb503 !important;
+}
