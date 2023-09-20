@@ -296,15 +296,3 @@ def orderdetail(request, order_id):
     }
     return render(request, 'accounts/orderdetail.html', context)
     #########################################################################3
-
-def contact(request):
-    if request.method =='Post':
-        firstname = request.Post['firstname']
-        lastname = request.Post['lastname']
-        email = request.Post['email']
-        phonnumber = request.Post['phonnunber']
-        message = request.Post['message']
-        messages.success(request, 'you have submitted your form')
-        return redirect('home')
-
-    return render(request, 'accounts/contact.html')
