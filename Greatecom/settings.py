@@ -139,7 +139,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = ['Greatecom/static',]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 #django_heroku.settings(locals())
@@ -168,4 +168,4 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
