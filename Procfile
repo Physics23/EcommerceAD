@@ -1,1 +1,1 @@
-web: gunicorn Greatcom.wsgi —-log-file -
+web: gunicorn Greatecom.wsgi —-log-file -
