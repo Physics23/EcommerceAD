@@ -139,6 +139,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = ['Greatecom/static',]
 
+
 #django_heroku.settings(locals())
 
 
