@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+<div class="container">
+	<div class="row">
+		{% include 'includes/dashboard_sidbar.html'%}
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">logged in as:</strong>
+			<span>{{user.first_name}}</span>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				<div class="col -md -6">
+					<div class="card" style='text-align:center;'>
+						<div class="card-body">
+							<img src="{{userprofile.profilepicture.url}}" alt="Profile Picture" width ="50" height="40" style="borders-radius":50>
+							<h5 class="card-title">total orders:</h5>
+							<h4>{{orders.count}}</h4>
+							<a href="{% url 'my_orders'%}">views orders</a>
+						</div>
+					</div>
+				</div>
+        <div class="col-md-6">
+					<div class="card" style='text-align:center;'>
+						<div class="card-body">
+					<img src="{{userprofile.profilepicture.url}}" alt="profile picture" width='50' heigth ='50'style='border-radius:50%';>
+							<p class="mb-0">{{user.email}}</p>
+							<p>{{user.phonnumber}}</p>
+
+						</div>
+					</div>
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+		<!-- left of the card aside -->
+
+
+
+
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock %}
