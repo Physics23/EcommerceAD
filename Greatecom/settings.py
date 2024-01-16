@@ -167,7 +167,7 @@ STORAGES = {
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
-#code for messages alert
+ # code for messages alert
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
