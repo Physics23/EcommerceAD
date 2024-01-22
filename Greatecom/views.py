@@ -8,8 +8,8 @@ def home(request):
 
     context = {
 
-         'reviews': reviews,
-         'products':products,
+    'reviews': reviews,
+    'products':products,
 
         }
 
