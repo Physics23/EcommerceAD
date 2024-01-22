@@ -29,15 +29,11 @@ def store(request, category_slug=None):
         product_count = products.count()
 
     context =  {
-<<<<<<< HEAD
-        'products': paged_products,
-        'product_count':product_count
-        }
-=======
+
      'products': paged_products,
      'product_count':product_count
     }
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
+
     return render(request, 'store/store.html', context)
 
 

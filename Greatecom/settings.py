@@ -15,7 +15,7 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config
-
+from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -137,7 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
 STATIC_ROOT = BASE_DIR /'static/'
 STATICFILES_DIRS = ['Greatecom/static',]
 
@@ -148,26 +147,11 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # django_heroku.settings(locals())
-=======
-STATIC_ROOT = BASE_DIR /'static'
-STATICFILES_DIRS = ['Greatecom/static',]
-
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-#django_heroku.settings(locals())
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
-
-
 # media files confugurations
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
-<<<<<<< HEAD
- # code for messages alert
-=======
-#code for messages alert
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
+
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
@@ -186,8 +170,5 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-<<<<<<< HEAD
-#django_heroku.settings(locals())
-=======
+
 django_heroku.settings(locals())
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
