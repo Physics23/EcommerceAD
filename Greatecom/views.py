@@ -7,8 +7,8 @@ def home(request):
         reviews = ReviewRating.objects.filter(product_id = product.id, status=True )
     context = {
 
-        'reviews': reviews,
-        'products':products,
+         'reviews': reviews,
+         'products':products,
 
         }
 
