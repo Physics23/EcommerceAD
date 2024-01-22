@@ -10,22 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-<<<<<<< HEAD
 
-=======
-from pathlib import Path
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
 import os
 import django_heroku
 import dj_database_url
 from decouple import config
 
-<<<<<<< HEAD
-from pathlib import Path
-
-
-=======
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,10 +36,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
-
-=======
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,10 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-<<<<<<< HEAD
     'whitenoise.middleware.WhiteNoiseMiddleware',
-=======
->>>>>>> f2e9e8b17a61506fe9d47690ff42aa78b7fecbd7
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
